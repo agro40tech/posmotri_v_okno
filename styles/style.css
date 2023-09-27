@@ -55,7 +55,7 @@ ol {
 }
 
 .result__video-container {
-  padding-bottom: 16px;
+  position: relative;
 }
 
 .result__video {
@@ -64,6 +64,7 @@ ol {
 }
 
 .search-form {
+  padding-top: 16px;
   display: flex;
   justify-content: space-between;
   gap: 40px;
@@ -184,6 +185,7 @@ ol {
 }
 
 .content__list {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 30px;
