@@ -84,6 +84,18 @@ ol {
   padding-bottom: 5px;
 }
 
+/* Что бы чекбоксы не кукурузило */
+.search-form__label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.search-form__label:has(:focus-visible) {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+}
+
 /* Поле ввода города */
 .search-form__textfield {
   min-width: 225px;
@@ -106,11 +118,6 @@ ol {
   outline: none;
 }
 
-.search-form__label:has(:focus-visible) {
-  padding: 1px;
-  outline: 1px solid #fff;
-}
-
 .search-form__textfield:active {
   border: 1px solid #fff;
 }
@@ -118,13 +125,8 @@ ol {
 /* Чекбоксы в секции с плеером  */
 .search-form__checkbox-list {
   display: flex;
-  max-width: 212px;
+  min-width: 212px;
   gap: 15px;
-}
-
-/* Что бы чекбоксы не кукурузило */
-.search-form__label {
-  display: flex;
 }
 
 .search-form__checkbox + span {
@@ -135,18 +137,12 @@ ol {
   cursor: pointer;
 }
 
-.search-form__label:has(:focus-visible) {
-  padding: 2px;
-}
-
 .search-form__checkbox[type="checkbox"]:checked + span {
   background-color: #fff;
-  border: 2px solid #000;
-  outline: 1px solid #fff;
+  outline-offset: 1px;
 }
 
 .search-form__label-text {
-  padding-left: 5px;
   cursor: pointer;
 }
 
@@ -176,7 +172,6 @@ ol {
   border: 0;
   border: 1px solid #fff;
   cursor: pointer;
-  transition: 0.5s;
 }
 
 .button:hover {
@@ -191,9 +186,11 @@ ol {
   outline: none;
 }
 
+/* Сделал обвотку для всех кнопок потому что
+ не понял нужно ли делать для кнопки "Показать ещё" */
 .button:focus-visible {
-  border: 0;
-  outline: 2px double #ffffff;
+  outline: 1px solid #fff;
+  outline-offset: 1px;
 }
 
 /* Дополнительный class для кнопки в секции с плеером (Найти) */
@@ -206,17 +203,16 @@ ol {
   display: flex;
   flex-direction: column;
   gap: 26px;
-  min-width: 395px;
-  max-height: 534px;
+  min-height: 534px;
 }
 
 /* Так и не понял почему в content__accent (ПО-) тере к низу пребито  */
 .title {
-  justify-self: flex-start;
+  justify-items: flex-start;
   font-family: Oswald;
   font-size: 75px;
   font-weight: 700;
-  line-height: 91%;
+  line-height: 94%;
   text-transform: uppercase;
 }
 
@@ -232,6 +228,8 @@ ol {
   flex-direction: column;
   gap: 30px;
   overflow: auto;
+  max-width: 399px;
+  max-height: 298px;
 }
 
 .content__list-item {
@@ -267,9 +265,9 @@ ol {
 по крайней мере я так понял это. */
 
 .content__video-card {
-  display: flex;
-  justify-content: space-between;
-  gap: 6px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 6px;
 }
 
 .content__video-card:hover {
@@ -284,6 +282,7 @@ ol {
   font-weight: 700;
   line-height: 100%;
   text-transform: uppercase;
+  padding-bottom: 6px;
 }
 
 /* Изображение карточки с видео */
