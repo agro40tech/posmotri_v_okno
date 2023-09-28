@@ -40,15 +40,19 @@ ol {
   list-style: none;
 }
 
+/* Обертка main */
 .content {
   display: flex;
   align-items: end;
+  justify-content: space-around;
   gap: 30px;
 }
 
+/* Секция с плеером */
 .result {
   display: flex;
   flex-direction: column;
+  max-width: 711px;
   gap: 15px;
 }
 
@@ -58,16 +62,15 @@ ol {
 
 .result__video {
   min-width: 711px;
-  max-height: 380px;
+  max-height: 383px;
   object-fit: cover;
 }
 
-/* Форма с поиском города */
+/* Форма с поиском города в секции с плеером */
 .search-form {
   display: flex;
   justify-content: space-between;
   gap: 40px;
-  width: 100%;
 }
 
 .search-form__fieldset {
@@ -78,10 +81,10 @@ ol {
   font-family: inherit;
   font-size: inherit;
   font-weight: 400;
-  padding-bottom: 7px;
+  padding-bottom: 5px;
 }
 
-/* Поля ввода города */
+/* Поле ввода города */
 .search-form__textfield {
   min-width: 225px;
   font-family: inherit;
@@ -112,16 +115,16 @@ ol {
   border: 1px solid #fff;
 }
 
-/* Чекбоксы  */
+/* Чекбоксы в секции с плеером  */
 .search-form__checkbox-list {
   display: flex;
+  max-width: 212px;
   gap: 15px;
 }
 
 /* Что бы чекбоксы не кукурузило */
 .search-form__label {
   display: flex;
-  gap: 5px;
 }
 
 .search-form__checkbox + span {
@@ -151,6 +154,7 @@ ol {
   text-decoration: underline;
 }
 
+/* Стиль для того что бы скрыть блок */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -192,32 +196,36 @@ ol {
   outline: 2px double #ffffff;
 }
 
+/* Дополнительный class для кнопки в секции с плеером (Найти) */
 .search-form__submit-button {
   align-self: flex-end;
 }
 
-/* Блок с карточками дней */
+/* Блок с карточками видосов */
 .content__details {
   display: flex;
   flex-direction: column;
   gap: 26px;
-  min-width: 410px;
-  max-height: 530px;
+  min-width: 395px;
+  max-height: 534px;
 }
 
+/* Так и не понял почему в content__accent (ПО-) тере к низу пребито  */
 .title {
   justify-self: flex-start;
   font-family: Oswald;
   font-size: 75px;
   font-weight: 700;
-  line-height: 98%;
+  line-height: 91%;
   text-transform: uppercase;
 }
 
+/* Выделение ПО- в заголовке секции с карточками видосов  */
 .content__accent {
   color: #545050;
 }
 
+/* Карточки видосов */
 .content__list {
   position: relative;
   display: flex;
@@ -226,6 +234,11 @@ ol {
   overflow: auto;
 }
 
+.content__list-item {
+  padding: 2px;
+}
+
+/* Кнопка в кторую завернута карточка */
 .content__card-link {
   display: block;
   text-decoration: none;
@@ -249,21 +262,21 @@ ol {
 }
 
 /* Карточка видео */
+/* TODO: Карточки которы с БД приходят отличаются от тех которые по макету,
+по этому могут быть расхождения в форме с карточками,
+по крайней мере я так понял это. */
+
 .content__video-card {
   display: flex;
   justify-content: space-between;
+  gap: 6px;
 }
 
 .content__video-card:hover {
   text-decoration: underline;
 }
 
-.content__video-card-description-container {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
+/* Заголовок карточки с видео */
 .content__video-card-title {
   color: inherit;
   font-family: Oswald;
@@ -273,12 +286,14 @@ ol {
   text-transform: uppercase;
 }
 
+/* Изображение карточки с видео */
 .content__video-card-thumbnail {
-  max-width: 190px;
-  min-height: 110px;
+  min-width: 190px;
+  max-height: 105px;
   object-fit: cover;
 }
 
+/* Кнопка "показать ещё" в секции с карточки видосов */
 .more-button {
   width: 100%;
 }
