@@ -230,10 +230,8 @@ ol {
   overflow: auto;
   max-width: 399px;
   max-height: 298px;
-}
-
-.content__list-item {
-  padding: 2px;
+  /* Необхадим для того что бы outline кнопки "Показать ещё" был в зоне видимости */
+  padding: 1px;
 }
 
 /* Кнопка в кторую завернута карточка */
@@ -268,6 +266,7 @@ ol {
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 6px;
+  padding: 2px;
 }
 
 .content__video-card:hover {
@@ -287,8 +286,8 @@ ol {
 
 /* Изображение карточки с видео */
 .content__video-card-thumbnail {
-  min-width: 190px;
-  max-height: 105px;
+  width: 100%;
+  max-height: 103px;
   object-fit: cover;
 }
 
