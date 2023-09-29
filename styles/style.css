@@ -13,7 +13,7 @@ html {
   block-size: 100%;
   margin: auto;
   color: #fff;
-  font-family: "Fira Sans Condensed", sans-serif;
+  font-family: "Fira Sans Condensed", sans-serif, Arial;
   font-size: 18px;
   background-color: #1b1919;
   display: flex;
@@ -64,6 +64,18 @@ ol {
   min-width: 711px;
   max-height: 383px;
   object-fit: cover;
+  object-position: center;
+}
+
+/* Стиль для того что бы скрыть блок */
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 /* Форма с поиском города в секции с плеером */
@@ -74,14 +86,14 @@ ol {
 }
 
 .search-form__fieldset {
-  border: 0;
+  border: none;
 }
 
 .search-form__fieldset-title {
   font-family: inherit;
   font-size: inherit;
   font-weight: 400;
-  padding-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 /* Что бы чекбоксы не кукурузило */
@@ -89,11 +101,6 @@ ol {
   display: flex;
   align-items: center;
   gap: 5px;
-}
-
-.search-form__label:has(:focus-visible) {
-  outline: 1px solid #fff;
-  outline-offset: 1px;
 }
 
 /* Поле ввода города */
@@ -118,6 +125,13 @@ ol {
   outline: none;
 }
 
+/* Не совсем понял что от меня хотели, наверное это */
+/* Выделение label у поля ввода города */
+.search-form__label:has(:focus-visible) {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+}
+
 .search-form__textfield:active {
   border: 1px solid #fff;
 }
@@ -125,21 +139,31 @@ ol {
 /* Чекбоксы в секции с плеером  */
 .search-form__checkbox-list {
   display: flex;
+  justify-content: space-between;
   min-width: 212px;
   gap: 15px;
 }
 
-.search-form__checkbox + span {
-  width: 19px;
-  height: 19px;
+.search-form__pseudo-checkbox {
+  width: 17px;
+  height: 17px;
   background-color: transparent;
   outline: 1px solid #fff;
+  outline-offset: 1px;
   cursor: pointer;
 }
 
-.search-form__checkbox[type="checkbox"]:checked + span {
+.search-form__pseudo-checkbox::after {
+  content: "";
+  display: block;
+  width: 17px;
+  height: 17px;
   background-color: #fff;
-  outline-offset: 1px;
+  opacity: 0;
+}
+
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
+  opacity: 1;
 }
 
 .search-form__label-text {
@@ -150,17 +174,6 @@ ol {
   text-decoration: underline;
 }
 
-/* Стиль для того что бы скрыть блок */
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-  clip: rect(0 0 0 0);
-  overflow: hidden;
-}
-
 /* Глобальный стиль кнопки */
 .button {
   padding: 5px 72px;
@@ -169,9 +182,9 @@ ol {
   font-size: inherit;
   font-weight: 700;
   background-color: transparent;
-  border: 0;
   border: 1px solid #fff;
   cursor: pointer;
+  appearance: none;
 }
 
 .button:hover {
@@ -209,10 +222,10 @@ ol {
 /* Так и не понял почему в content__accent (ПО-) тере к низу пребито  */
 .title {
   justify-items: flex-start;
-  font-family: Oswald;
+  font-family: "Oswald", sans-serif, Arial;
   font-size: 75px;
   font-weight: 700;
-  line-height: 94%;
+  line-height: 0.94;
   text-transform: uppercase;
 }
 
@@ -228,10 +241,7 @@ ol {
   flex-direction: column;
   gap: 30px;
   overflow: auto;
-  max-width: 399px;
   max-height: 298px;
-  /* Необхадим для того что бы outline кнопки "Показать ещё" был в зоне видимости */
-  padding: 1px;
 }
 
 /* Кнопка в кторую завернута карточка */
@@ -242,7 +252,15 @@ ol {
   font-family: inherit;
   font-size: inherit;
   font-weight: 400;
-  line-height: 90%;
+  line-height: 0.9;
+}
+
+.content__card-link:hover {
+  text-decoration: underline;
+}
+
+.content__card-link:active {
+  background-color: #545050;
 }
 
 .content__card-link:focus {
@@ -262,26 +280,26 @@ ol {
 по этому могут быть расхождения в форме с карточками,
 по крайней мере я так понял это. */
 
-.content__video-card {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 6px;
+/* Необходимо для того что бы выделении через TAB outline не терялся */
+.content__list-item {
   padding: 2px;
 }
 
-.content__video-card:hover {
-  text-decoration: underline;
+.content__video-card {
+  display: grid;
+  grid-template-columns: 200px 194px;
+  padding: 2px;
 }
 
 /* Заголовок карточки с видео */
 .content__video-card-title {
   color: inherit;
-  font-family: Oswald;
+  font-family: "Oswald", sans-serif, Arial;
   font-size: 30px;
   font-weight: 700;
-  line-height: 100%;
+  line-height: 1;
   text-transform: uppercase;
-  padding-bottom: 6px;
+  margin-bottom: 6px;
 }
 
 /* Изображение карточки с видео */
